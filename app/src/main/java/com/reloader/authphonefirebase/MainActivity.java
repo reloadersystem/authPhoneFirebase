@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         mCountryCode = findViewById(R.id.ccpCountryCode);
 
 
-        String phonenumber = getIntent().getStringExtra("phonenumber");
-        sendVerificationCode(phonenumber);
+        //String phonenumber = getIntent().getStringExtra("phonenumber");
+        sendVerificationCode("51961162784");
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 verifyCode(code);
             }
         });
-
+       // https://www.youtube.com/watch?v=JZ8hwzBKsMM
     }
 
     private void verifyCode(String code) {
@@ -103,18 +103,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendVerificationCode(String number) {
-        String countryCode = mCountryCode.getSelectedCountryCode().toString();
+        //String countryCode = mCountryCode.getSelectedCountryCode().toString();
 
-        mCompletePhoneNumber = "+" + countryCode + number;
+       // mCompletePhoneNumber = "+" + countryCode + number;
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                mCompletePhoneNumber,
+                number,
                 60,
                 TimeUnit.SECONDS,
                 TaskExecutors.MAIN_THREAD,
                 mCallBack
         );
-
     }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks
